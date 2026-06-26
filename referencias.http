@@ -1,0 +1,61 @@
+GET http://localhost:3333/mesas
+
+###
+
+POST http://localhost:3333/mesas
+Content-Type: application/json
+
+{
+    "numero": "01",
+    "tipo": "mesa"
+}
+
+###
+
+GET http://localhost:3333/produtos
+
+###
+
+POST http://localhost:3333/produtos
+Content-Type: application/json
+
+{
+    "nome": "X-Burger",
+    "preco": 25.90
+}
+
+###
+
+GET http://localhost:3333/pedidos
+
+###
+
+POST http://localhost:3333/pedidos
+Content-Type: application/json
+
+{
+    "mesaComandaId": "UUID_DA_MESA",
+    "status": "aberto"
+}
+
+###
+
+POST http://localhost:3333/itens
+Content-Type: application/json
+
+{
+    "pedidoId": "UUID_DO_PEDIDO",
+    "produtoId": "UUID_DO_PRODUTO",
+    "quantidade": 2,
+    "observacoes": "sem cebola"
+}
+
+###
+
+POST http://localhost:3333/usuarios
+Content-Type: application/json
+
+{
+    "usuario": "admin",
+    "senha": "123"
+}
