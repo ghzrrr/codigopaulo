@@ -1,61 +1,72 @@
-GET http://localhost:3333/mesas
+@baseUrl = http://localhost:3333
 
-###
-
-POST http://localhost:3333/mesas
+### MESAS
+POST {{baseUrl}}/mesas
 Content-Type: application/json
 
 {
-    "numero": "01",
-    "tipo": "mesa"
+  "numero": "3",
+  "tipo": "mesa"
 }
 
 ###
 
-GET http://localhost:3333/produtos
+GET {{baseUrl}}/mesas
 
-###
 
-POST http://localhost:3333/produtos
+### PRODUTOS
+POST {{baseUrl}}/produtos
 Content-Type: application/json
 
 {
-    "nome": "X-Burger",
-    "preco": 25.90
+  "nome": "pizza",
+  "preco": 70
 }
 
 ###
 
-GET http://localhost:3333/pedidos
+GET {{baseUrl}}/produtos
 
-###
 
-POST http://localhost:3333/pedidos
+### PEDIDOS
+POST {{baseUrl}}/pedidos
 Content-Type: application/json
 
 {
-    "mesaComandaId": "UUID_DA_MESA",
-    "status": "aberto"
+  "mesaComandaId": "31356542-86ec-43d0-b267-8998e784065d",
+  "status": "aberto"
 }
 
 ###
 
-POST http://localhost:3333/itens
+GET {{baseUrl}}/pedidos
+
+
+### ITENS (mesma ideia: usa IDs dos GET acima)
+POST {{baseUrl}}/itens
 Content-Type: application/json
 
 {
-    "pedidoId": "UUID_DO_PEDIDO",
-    "produtoId": "UUID_DO_PRODUTO",
-    "quantidade": 2,
-    "observacoes": "sem cebola"
+  "pedidoId": "9726e8d0-e596-4b8d-b573-12f4830c266d",
+  "produtoId": "fa812849-9167-45f4-a679-f47b8be11cd5",
+  "quantidade": 1,
+  "observacoes": ""
 }
 
 ###
 
-POST http://localhost:3333/usuarios
+GET {{baseUrl}}/itens
+
+
+### USUÁRIOS
+POST {{baseUrl}}/usuarios
 Content-Type: application/json
 
 {
-    "usuario": "admin",
-    "senha": "123"
+  "usuario": "guilherme",
+  "senha": "123"
 }
+
+###
+
+GET {{baseUrl}}/usuarios
