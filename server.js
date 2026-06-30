@@ -1,9 +1,14 @@
 import Fastify from "fastify";
 import pg from "pg";
+import cors from "@fastify/cors";
 
 const { Pool } = pg;
 
 const app = Fastify();
+
+await app.register(cors, {
+    origin: true
+});
 
 const pool = new Pool({
     user: "postgres",
@@ -12,6 +17,8 @@ const pool = new Pool({
     password: "senai",
     port: 5432
 });
+
+// MESAS
 
 app.get("/mesas", async () => {
     const resultado = await pool.query(
@@ -65,6 +72,8 @@ app.delete("/mesas/:id", async (request) => {
     return { mensagem: "Mesa removida" };
 });
 
+// PRODUTOS
+
 app.get("/produtos", async () => {
     const resultado = await pool.query(
         'SELECT * FROM "Produto"'
@@ -117,6 +126,8 @@ app.delete("/produtos/:id", async (request) => {
     return { mensagem: "Produto removido" };
 });
 
+// PEDIDOS
+
 app.get("/pedidos", async () => {
     const resultado = await pool.query(
         'SELECT * FROM "Pedido"'
@@ -168,6 +179,8 @@ app.delete("/pedidos/:id", async (request) => {
 
     return { mensagem: "Pedido removido" };
 });
+
+// ITENS
 
 app.get("/itens", async () => {
     const resultado = await pool.query(
@@ -229,6 +242,8 @@ app.delete("/itens/:id", async (request) => {
     return { mensagem: "Item removido" };
 });
 
+// USUÁRIOS
+
 app.get("/usuarios", async () => {
     const resultado = await pool.query(
         'SELECT id, usuario FROM "Usuario"'
@@ -284,5 +299,5 @@ app.delete("/usuarios/:id", async (request) => {
 app.listen({
     port: 3333
 }).then(() => {
-    console.log("Servidor rodando");
+    console.log("Servidor rodando na porta 3333");
 });
